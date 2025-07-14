@@ -1,0 +1,20 @@
+CREATE DATABASE mitre;
+CREATE USER 'root'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON mitre.* TO 'mitreuser'@'localhost';
+FLUSH PRIVILEGES;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE saved_runbooks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  apt VARCHAR(100) NOT NULL,
+  tactics JSON,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  runbook_html LONGTEXT,
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);

